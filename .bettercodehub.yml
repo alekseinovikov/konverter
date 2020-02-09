@@ -3,3 +3,5 @@ languages:
   - javascript
   - kotlin
   - typescript
+exclude:
+  - *.kts
