@@ -2,30 +2,37 @@ plugins {
     kotlin("jvm") version "1.3.61"
 }
 
-group = "org.konverter"
-version = "1.0-SNAPSHOT"
+allprojects {
+    group = "me.freedom4live.konverter"
+    version = "1.0-SNAPSHOT"
 
-repositories {
-    mavenCentral()
-}
+    apply(plugin = "kotlin")
+    apply(plugin = "java")
 
-dependencies {
-    implementation(kotlin("stdlib-jdk8"))
-    testImplementation("org.junit.jupiter:junit-jupiter:5.6.0")
-}
-
-tasks.test {
-    useJUnitPlatform()
-    testLogging {
-        events("passed", "skipped", "failed")
+    repositories {
+        mavenCentral()
     }
 }
 
-tasks {
-    compileKotlin {
-        kotlinOptions.jvmTarget = "1.8"
+subprojects {
+    dependencies {
+        implementation(kotlin("stdlib-jdk8"))
+        testImplementation("org.junit.jupiter:junit-jupiter:5.6.0")
     }
-    compileTestKotlin {
-        kotlinOptions.jvmTarget = "1.8"
+
+    tasks.test {
+        useJUnitPlatform()
+        testLogging {
+            events("passed", "skipped", "failed")
+        }
+    }
+
+    tasks {
+        compileKotlin {
+            kotlinOptions.jvmTarget = "1.8"
+        }
+        compileTestKotlin {
+            kotlinOptions.jvmTarget = "1.8"
+        }
     }
 }
