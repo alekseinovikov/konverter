@@ -1,5 +1,6 @@
 rootProject.name = "konverter"
 
 include(
-    ":konverter-core"
+    ":konverter-core",
+    ":konverter-lines"
 )
